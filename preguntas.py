@@ -140,9 +140,12 @@ def pregunta_08():
 
 
 def pregunta_09():
-    tbl0['year'] = pd.DatetimeIndex(tbl0['_c3']).year
-    tbl0['year'] = tbl0['year'].apply(lambda x: str(x))
-    tbl0.to_csv('tbl0.tsv',sep='\t', index=False)
+    subTable = tbl0
+    subTable['year'] = (subTable['_c3'].str.split('-', n=1))
+    myList = subTable['year'].tolist();
+    myList = [i[0] for i in myList]
+    subTable['year'] = myList
+    
     """
     Agregue el año como una columna al archivo `tbl0.tsv`.
 
@@ -157,7 +160,7 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return tbl0
+    return subTable
 
 
 def pregunta_10():
