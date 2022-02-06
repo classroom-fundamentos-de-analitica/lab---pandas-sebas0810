@@ -140,11 +140,6 @@ def pregunta_08():
 
 
 def pregunta_09():
-    subTable = tbl0
-    subTable['year'] = (subTable['_c3'].str.split('-', n=1))
-    myList = subTable['year'].tolist();
-    myList = [i[0] for i in myList]
-    subTable['year'] = myList
     
     """
     Agregue el año como una columna al archivo `tbl0.tsv`.
@@ -160,7 +155,9 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return subTable
+    a = tbl0
+    a['year'] = a['_c3'].str[0:4]
+    return a
 
 
 def pregunta_10():
